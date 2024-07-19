@@ -17,7 +17,7 @@ endforeach()
 add_library(${PROJECT_NAME} SHARED
   src/CanDriver.cpp
   src/DeviceCanOpen.cpp
-  src/CanDevice.cpp)
+)
 
 target_include_directories(${PROJECT_NAME} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
