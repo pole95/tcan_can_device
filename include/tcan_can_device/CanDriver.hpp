@@ -71,6 +71,8 @@ class CanDriver {
     return canFrameIdentifierToFunctionMap_.emplace(matcher, std::make_pair(device, std::bind(fp, device, std::placeholders::_1))).second;
   }
 
+  void sendSync() { sendMessage(CanMsg(0x80, 0, nullptr)); }
+
  private:
   std::thread receiveThread_;
   std::thread transmitThread_;
