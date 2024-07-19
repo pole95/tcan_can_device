@@ -15,6 +15,13 @@ DeviceCanOpen::DeviceCanOpen(std::unique_ptr<DeviceCanOpenOptions>&& options)
       sdoMsgsMutex_(),
       sdoMsgs_() {
   driver_ = new CanDriver(std::make_unique<CanDriverOptions>(options_->driverOptions_));
+  isCheckingSanity_ = true;
+  sanityCheckThread_ = std::thread(&DeviceCanOpen::sanityCheckWorker, this);
+}
+DeviceCanOpen::~DeviceCanOpen() {
+  isCheckingSanity_ = false;
+  sanityCheckThread_.join();
+  delete driver_;
 }
 
 bool DeviceCanOpen::sanityCheck() {

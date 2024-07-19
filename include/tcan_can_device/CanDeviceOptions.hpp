@@ -18,7 +18,11 @@ class CanDeviceOptions {
    *                                  If no message was received within this time, the device is considered as missing.
    */
   CanDeviceOptions(const uint32_t nodeId, const std::string& name, const unsigned int maxDeviceTimeoutCounter = 20)
-      : nodeId_(nodeId), name_(name), maxDeviceTimeoutCounter_(maxDeviceTimeoutCounter), printConfigInfo_(true) {}
+      : nodeId_(nodeId),
+        name_(name),
+        maxDeviceTimeoutCounter_(maxDeviceTimeoutCounter),
+        printConfigInfo_(true),
+        sanityCheckInterval_(100) {}
 
   /*!
    *
@@ -56,6 +60,8 @@ class CanDeviceOptions {
   bool printConfigInfo_;
 
   CanDriverOptions driverOptions_;
+
+  uint32_t sanityCheckInterval_;
 };
 
 } /* namespace tcan_can_device */

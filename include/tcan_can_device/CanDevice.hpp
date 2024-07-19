@@ -114,6 +114,17 @@ class CanDevice {
 
   //!  reference to the CAN bus the device is connected to
   CanDriver* driver_;
+
+  std::thread sanityCheckThread_;
+  std::atomic_bool isCheckingSanity_{false};
+  void sanityCheckWorker() {
+    auto nextLoop = std::chrono::steady_clock::now();
+    while (isCheckingSanity_) {
+      nextLoop += std::chrono::milliseconds(options_->sanityCheckInterval_);
+      std::this_thread::sleep_until(nextLoop);
+      sanityCheck();
+    }
+  }
 };
 
 } /* namespace tcan_can_device */
