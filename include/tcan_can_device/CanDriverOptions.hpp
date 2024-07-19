@@ -24,7 +24,7 @@ struct CanDriverOptions {
   int priorityReceiveThread_;
   int priorityTransmitThread;
 
-  ssize_t maxQueueSize_;
+  size_t maxQueueSize_;
 
   timeval readTimeout_;
   timeval writeTimeout_;
