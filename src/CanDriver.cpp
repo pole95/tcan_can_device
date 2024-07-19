@@ -4,15 +4,15 @@
 #include <linux/if.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
-#include <tcan_can_device/CanDriver.hpp>
 #include <cerrno>
 #include <cstring>
 #include <memory>
 #include <message_logger/message_logger.hpp>
 #include <mutex>
 #include <stdexcept>
-#include "tcan_can_device/CanDriverOptions.hpp"
-#include "tcan_can_device/CanMsg.hpp"
+#include <tcan_can_device/CanDriver.hpp>
+#include <tcan_can_device/CanDriverOptions.hpp>
+#include <tcan_can_device/CanMsg.hpp>
 
 using namespace tcan_can_device;
 
